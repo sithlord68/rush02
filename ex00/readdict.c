@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:37:53 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 15:44:54 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:09:17 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ char	*readdictcontent(char *readtable, int file, int filesize)
 	return (readtable);
 }
 
-char	*match(char *dictfile)
+char	*getdict(char *dictfile)
 {
 	int		file;
 	int		fsize;
