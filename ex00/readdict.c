@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:37:53 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 16:09:17 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:43:40 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 #include <unistd.h>
 
 int	is_alpha(char c);
-
 int	is_numeric(char c);
-
 int	is_space(char c);
-
 int	is_delim(char c, char delim);
-
 int	is_cr(char c);
+void	ft_putnstr(char *str, int n);
 
 int	filesize(int file)
 {
@@ -51,7 +48,6 @@ char	handlevalue(char *readtable, char c, char status, char statuschange)
 	line = 0;
 	while (readtable[line])
 	{
-		printf("lu: %s", &readtable[line]);
 		line++;
 	}
 	if (line > 0)
@@ -65,6 +61,7 @@ char	handlevalue(char *readtable, char c, char status, char statuschange)
 		else
 		{
 			readtable[line] += '\0';
+			printf("lu: %s", &readtable[line]);
 			line++;
 		}
 	}
@@ -79,13 +76,19 @@ char	*readdictcontent(char *readtable, int file, int filesize)
 	char	c;
 	int		statuschange;
 	int		status;
+	int		cnt;
+	char	*temp;
 
+	temp = malloc(sizeof(char) * filesize);
+	cnt = read(file, temp, filesize);
 	statuschange = 'i';
 	status = 'i';
 	i = 0;
+	ft_putnstr(temp, 20);
 	while (i < filesize)
 	{
-		c = read(file, &c, 1);
+		printf(",car no %d \"%c\"", i, c);
+		c = temp[i];;
 		if (is_delim(c, ':'))
 			statuschange = 'v';
 		else if (is_cr(c))
@@ -96,6 +99,7 @@ char	*readdictcontent(char *readtable, int file, int filesize)
 			status = handlevalue(readtable, c, status, statuschange);
 		i++;
 	}
+	free (temp);
 	return (readtable);
 }
 

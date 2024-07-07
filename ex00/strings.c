@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:15:18 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 15:18:40 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:42:43 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	ft_putstr(char *str)
 		write(1, str, 1);
 		str++;
 	}
+}
+
+void	ft_putnstr(char *str, int n)
+{
+	write(1, str, n);
 }
 
 void	ft_putnbr(int nb)

@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:21:37 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 16:07:01 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:23:01 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 char	*translate(char *totranslate, char *dict);
 void	ft_putstr(char *str);
+void	ft_putchar(char c);
 
 int	findvalue(int argc)
 {
@@ -82,6 +83,7 @@ int	main(int argc, char **argv)
 	printf("dict: \"%s\"\n", dict);
 	toput = translate(totranslate, dict);
 	ft_putstr(toput);
+	ft_putchar('\n');
 }
 
 /*
