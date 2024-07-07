@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   translate.c                                        :+:      :+:    :+:   */
+/*   readdict.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/07 12:00:06 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 12:50:03 by pjolidon         ###   ########.fr       */
+/*   Created: 2024/07/07 12:37:53 by pjolidon          #+#    #+#             */
+/*   Updated: 2024/07/07 12:47:02 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*translate(char *totranslate, char *dict)
+#include <stdlib.h>
+
+char	*match(char *dictfile)
 {
-	char	*translate;
+	char	file;
+	char	readstr[256]
 
-	(void) totranslate;
-	(void) dict;
-
-	return (translate);
+	file = open(dictfile);
+	readstr = read(file);
 }
+
