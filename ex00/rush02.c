@@ -6,14 +6,14 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:21:37 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/06 19:34:22 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 11:56:58 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-char	*translate(char *totranslate,char *dict);
+char	*translate(char *totranslate, char *dict);
 void	ft_putstr(char *str);
 
 int	findvalue(int argc)

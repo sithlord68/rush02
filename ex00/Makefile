@@ -5,10 +5,10 @@ LDFLAGS =
 all: rush-02
 
 rush-02: -o main.o part.o
-	$(CC) $(LDFLAGS) -o rush-02 main.o part.o
+	$(CC) $(LDFLAGS) -o rush-02 rush02.o part.o
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c
+main.o: rush02.c
+	$(CC) $(CFLAGS) -c rush02.c
 
 part.o: part.c
 	$(CC) $(CFLAGS) -c part.c 
