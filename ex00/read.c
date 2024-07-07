@@ -18,6 +18,7 @@
 char	*get_txt(char *ptr);
 char	*get_txt(char *ptr);
 char	*ft_strstr(char *str, char *to_find);
+void	print_text(char *ptr, char *nb);
 
 int	get_file_size(void)
 {
@@ -28,7 +29,7 @@ int	get_file_size(void)
 	fl = open("./numbers.dict",O_RDWR);
 	if (fl == -1)
 	{
-		printf("ERROR\n");
+		write(1, "ERROR\n", 6);
 		return (0);
 	}
 	file_size = 0;
@@ -74,7 +75,7 @@ char	*get_txt(char *ptr)
 	fl = open("./numbers.dict",O_RDWR);
 	if (fl == -1)
 	{
-		printf("ERROR\n");
+		write(1,"ERROR\n",6);
 		return (NULL);
 	}
 	ptr = malloc(sizeof(char) * get_file_size() + 1);
@@ -83,22 +84,73 @@ char	*get_txt(char *ptr)
 	return (ptr);
 }
 
-int	main(void)
+void	parse(char *ptr, char *str)
 {
-	char	*ptr;
+	int		i;
+	char	c[2];
+
+	c[1] = '\0';
+	i = 0;
+	if (str[0] == '0' && str[1] == '\0')
+		print_text(ptr, "0");
+	while (*str =='0')
+		str++;
+	while (str[i])
+		i++;
+	if (i == 3 )
+	{
+		c[0] = str[0];
+		print_text(ptr, c);
+		write(1, " ", 1);
+		print_text(ptr, "100");
+		write(1, " ", 1);
+		parse(ptr, str + 1);
+	}
+	else if (i == 2 )
+	{
+		if (str[0] == '1')
+		{
+			print_text(ptr, str);
+		}
+		else
+		{	
+			c[0] = str[1];
+			str[1] = '0';
+			print_text(ptr, str);
+			write(1, " ", 1);
+			parse(ptr, c);
+		}
+	}
+	else if (i == 1 && str[0] != '0')
+	{
+		print_text(ptr, str);
+	}
+}
+
+void	print_text(char *ptr, char *nb)
+{
 	char	*find;
 	int		i;
 
 	i = 0;
-	ptr = get_txt(ptr);
-	find = ft_strstr(ptr, "5");
+	find = ft_strstr(ptr, nb);
 	while (find[i] != '\n')
 	{
 		if ((find[i] >= 'a' && find[i] <= 'z') || (find[i] >= 'A' && find[i] <= 'Z'))
 		{
-			printf("%c",find[i]);
+			write(1,&find[i],1);
 		}
 		i++;
 	}
+}
+
+int	ft_read(char *str, int j)
+{
+	char	*ptr;
+	int		i;
+
+	i = 0;
+	ptr = get_txt(ptr);
+	parse(ptr, str);
 	return (0);
 }

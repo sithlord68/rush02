@@ -13,17 +13,17 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char	*ft_part(int i, char *str);
+int	ft_part(int i, char *str);
+int ft_read(char *str, int j);
 
 void	res_1(int i, char *str, int res)
 {
 	int		j;
 	int		k;
-	char	*number;
+	char	number[2];
 	char	*cpy;
 
 	k = 0;
-	number = (char *)malloc(res * sizeof(char));
 	cpy = (char *)malloc((i - res + 1) * sizeof(char));
 	j = 1;
 	number[0] = str[0];
@@ -33,6 +33,7 @@ void	res_1(int i, char *str, int res)
 		k++;
 		j++;
 	}
+	ft_read(number, i);
 	ft_part(i - 1, cpy);
 }
 
@@ -40,11 +41,10 @@ void	res_2(int i, char *str, int res)
 {
 	int		j;
 	int		k;
-	char	*number;
+	char	number[3];
 	char	*cpy;
 
 	k = 0;
-	number = (char *)malloc(res * sizeof(char));
 	cpy = (char *)malloc((i - res + 1) * sizeof(char));
 	j = 2;
 	number[0] = str[0];
@@ -55,6 +55,7 @@ void	res_2(int i, char *str, int res)
 		k++;
 		j++;
 	}
+	ft_read(number, i);
 	ft_part(i - 2, cpy);
 }
 
@@ -62,11 +63,10 @@ void	res_0(int i, char *str)
 {
 	int		j;
 	int		k;
-	char	*number;
+	char	number[4];
 	char	*cpy;
 
 	k = 0;
-	number = (char *)malloc(3 * sizeof(char));
 	cpy = (char *)malloc(4 * sizeof(char));
 	j = 3;
 	number[0] = str[0];
@@ -78,13 +78,16 @@ void	res_0(int i, char *str)
 		k++;
 		j++;
 	}
+	ft_read(number, i);
 	ft_part(i - 3, cpy);
 }
 
-char	*ft_part(int i, char *str)
+int	ft_part(int i, char *str)
 {
 	int	res;
 
+	if (i == 0)
+		return (0);
 	res = i % 3;
 	if (res == 1)
 	{
@@ -98,9 +101,9 @@ char	*ft_part(int i, char *str)
 	{
 		res_0(i, str);
 	}
-	return (str);
+	return (0);
 }
-/*
+
 int	main(int argc, char **argv)
 {
 	int	i;
@@ -112,6 +115,5 @@ int	main(int argc, char **argv)
 			write(1, "Error/n", 6);
 		i++;
 	}
-	ft_part(i, *argv);
+	ft_part(i, argv[1]);
 }
-*/
