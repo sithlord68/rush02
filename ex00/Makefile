@@ -4,17 +4,26 @@ LDFLAGS =
 
 all: rush-02
 
-rush-02: rush02.o part.o translate.o
-	$(CC) $(LDFLAGS) -o rush-02 rush02.o part.o translate.o
+rush-02: rush02.o part.o translate.o strings.o readdict.o is.o
+	$(CC) $(LDFLAGS) -o rush-02 rush02.o part.o translate.o strings.o readdict.o is.o
 
-main.o: rush02.c
-	$(CC) $(CFLAGS) -c rush02.c
+rush02.o: rush02.c
+	$(CC) $(CFLAGS) -c rush02.c 
+
+part.o: part.c
+	$(CC) $(CFLAGS) -c part.c 
 
 translate.o: translate.c
 	$(CC) $(CFLAGS) -c translate.c
 
-part.o: part.c
-	$(CC) $(CFLAGS) -c part.c 
+strings.o: strings.c
+	$(CC) $(CFLAGS) -c strings.c 
+
+readdict.o: readdict.c
+	$(CC) $(CFLAGS) -c readdict.c 
+
+is.o: is.c
+	$(CC) $(CFLAGS) -c is.c 
 
 fclean:
 	rm -f *.o rush-02

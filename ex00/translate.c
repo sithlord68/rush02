@@ -6,16 +6,17 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:00:06 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 12:50:03 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 15:43:23 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*translate(char *totranslate, char *dict)
+char	*match(char *dictfile);
+
+char	*translate(char *totranslate, char *dictfile)
 {
 	char	*translate;
 
+	translate = match(dictfile);
 	(void) totranslate;
-	(void) dict;
-
 	return (translate);
 }

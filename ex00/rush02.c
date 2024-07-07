@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:21:37 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 12:30:15 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 15:42:42 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,15 @@ int	main(int argc, char **argv)
 		return (0);
 	totranslate = readvalue (findvalue(argc), argv);
 	dict = setdict(argc, argv);
-printf("totranslate: \"%s\"\n", totranslate);
-printf("dict: \"%s\"\n", dict);
 	if (totranslate == NULL || dict == NULL)
 		return (0);
 	toput = translate(totranslate, dict);
 	ft_putstr(toput);
+}
+
+/*
+printf("totranslate: \"%s\"\n", totranslate);
+printf("dict: \"%s\"\n", dict);
 //	free(totranslate);
 //	free(dict);
-}
+*/
