@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:30:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2024/07/07 23:11:37 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 23:41:52 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int	ft_part(int i, char *str, char *dict)
 {
 	int	res;
 
+	if (i == 0)
+		return (0);
 	res = i % 3;
 	if (res == 1)
 	{

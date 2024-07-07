@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:34:30 by fmixtur           #+#    #+#             */
-/*   Updated: 2024/07/07 23:14:51 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 23:35:26 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,5 +124,6 @@ int	ft_read(char *str, int j, char *dict)
 		print_text(ptr, zeros);
 	write(1, " ", 1);
 	free(ptr);
+	free(zeros);
 	return (0);
 }
