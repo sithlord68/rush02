@@ -13,6 +13,8 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+char	*ft_part(int i, char *str);
+
 void	res_1(int i, char *str, int res)
 {
 	int		j;
@@ -20,11 +22,12 @@ void	res_1(int i, char *str, int res)
 	char	*number;
 	char	*cpy;
 
+	k = 0;
 	number = (char *)malloc(res * sizeof(char));
-	cpy = (char *)malloc((i - res) * sizeof(char));
+	cpy = (char *)malloc((i - res + 1) * sizeof(char));
 	j = 1;
 	number[0] = str[0];
-	while (str)
+	while (str[j])
 	{
 		cpy[k] = str[j];
 		k++;
@@ -40,12 +43,13 @@ void	res_2(int i, char *str, int res)
 	char	*number;
 	char	*cpy;
 
+	k = 0;
 	number = (char *)malloc(res * sizeof(char));
-	cpy = (char *)malloc((i - res) * sizeof(char));
+	cpy = (char *)malloc((i - res + 1) * sizeof(char));
 	j = 2;
 	number[0] = str[0];
 	number[1] = str[1];
-	while (str)
+	while (str[j])
 	{
 		cpy[k] = str[j];
 		k++;
@@ -61,13 +65,14 @@ void	res_0(int i, char *str)
 	char	*number;
 	char	*cpy;
 
+	k = 0;
 	number = (char *)malloc(3 * sizeof(char));
-	cpy = (char *)malloc(3 * sizeof(char));
+	cpy = (char *)malloc(4 * sizeof(char));
 	j = 3;
 	number[0] = str[0];
 	number[1] = str[1];
 	number[2] = str[2];
-	while (str)
+	while (str[j])
 	{
 		cpy[k] = str[j];
 		k++;
