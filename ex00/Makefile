@@ -16,5 +16,5 @@ translate.o: translate.c
 part.o: part.c
 	$(CC) $(CFLAGS) -c part.c 
 
-clean:
+fclean:
 	rm -f *.o rush-02
