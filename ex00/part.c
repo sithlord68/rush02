@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   part.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 18:30:50 by ktintim-          #+#    #+#             */
-/*   Updated: 2024/07/06 18:30:54 by ktintim-         ###   ########.fr       */
+/*   Updated: 2024/07/07 22:22:30 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int	ft_part(int i, char *str);
 int ft_read(char *str, int j);
@@ -27,6 +28,7 @@ void	res_1(int i, char *str, int res)
 	cpy = (char *)malloc((i - res + 1) * sizeof(char));
 	j = 1;
 	number[0] = str[0];
+	number[1] = '\0';
 	while (str[j])
 	{
 		cpy[k] = str[j];
@@ -49,6 +51,7 @@ void	res_2(int i, char *str, int res)
 	j = 2;
 	number[0] = str[0];
 	number[1] = str[1];
+	number[2] = '\0';
 	while (str[j])
 	{
 		cpy[k] = str[j];
@@ -72,6 +75,7 @@ void	res_0(int i, char *str)
 	number[0] = str[0];
 	number[1] = str[1];
 	number[2] = str[2];
+	number[3] = '\0';
 	while (str[j])
 	{
 		cpy[k] = str[j];

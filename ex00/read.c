@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmixtur <marvin@42lausanne.ch>             +#+  +:+       +#+        */
+/*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:34:30 by fmixtur           #+#    #+#             */
-/*   Updated: 2024/07/06 13:34:32 by fmixtur          ###   ########.fr       */
+/*   Updated: 2024/07/07 22:21:23 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,19 +84,15 @@ char	*get_txt(char *ptr)
 	return (ptr);
 }
 
-void	parse(char *ptr, char *str)
+void	parse(char *ptr, char *str, int i)
 {
-	int		i;
 	char	c[2];
 
 	c[1] = '\0';
-	i = 0;
 	if (str[0] == '0' && str[1] == '\0')
 		print_text(ptr, "0");
 	while (*str =='0')
 		str++;
-	while (str[i])
-		i++;
 	if (i == 3 )
 	{
 		c[0] = str[0];
@@ -104,7 +100,7 @@ void	parse(char *ptr, char *str)
 		write(1, " ", 1);
 		print_text(ptr, "100");
 		write(1, " ", 1);
-		parse(ptr, str + 1);
+		parse(ptr, str + 1, --i);
 	}
 	else if (i == 2 )
 	{
@@ -118,7 +114,7 @@ void	parse(char *ptr, char *str)
 			str[1] = '0';
 			print_text(ptr, str);
 			write(1, " ", 1);
-			parse(ptr, c);
+			parse(ptr, c, --i);
 		}
 	}
 	else if (i == 1 && str[0] != '0')
@@ -148,9 +144,13 @@ int	ft_read(char *str, int j)
 {
 	char	*ptr;
 	int		i;
+	int		len;
 
+	len = 0;
+	while (str[len])
+		len++;
 	i = 0;
 	ptr = get_txt(ptr);
-	parse(ptr, str);
+	parse(ptr, str, len);
 	return (0);
 }
