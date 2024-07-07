@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:21:37 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 11:56:58 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 12:30:15 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*setdict(char argc, char **argv)
 	char	*dict;
 	int		len;
 
-	if (argc == 1)
+	if (argc == 2)
 	{
 		dict = malloc(sizeof(char) * 15);
 		dict = "./numbers.dict";
@@ -66,25 +66,11 @@ char	*setdict(char argc, char **argv)
 	return (dict);
 }
 
-void	parseparams(int nb, char **argv, char *params)
-{
-	int	pvalue;
-	int	i;
-
-	pvalue = 1;
-	if (nb > 2)
-		pvalue = 2;
-	i = 0;
-	while (argv[pvalue][i])
-		i++;
-}
-
 int	main(int argc, char **argv)
 {
 	char	*totranslate;
 	char	*dict;
 	char	*toput;
-	int		i;
 
 	if (argc == 1)
 		return (0);
