@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 12:37:53 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 16:43:40 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 16:51:27 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	handlevalue(char *readtable, char c, char status, char statuschange)
 		else
 		{
 			readtable[line] += '\0';
-			printf("lu: %s", &readtable[line]);
 			line++;
 		}
 	}
@@ -81,13 +80,13 @@ char	*readdictcontent(char *readtable, int file, int filesize)
 
 	temp = malloc(sizeof(char) * filesize);
 	cnt = read(file, temp, filesize);
+	printf("retour: %d\n", cnt);
 	statuschange = 'i';
 	status = 'i';
 	i = 0;
 	ft_putnstr(temp, 20);
 	while (i < filesize)
 	{
-		printf(",car no %d \"%c\"", i, c);
 		c = temp[i];;
 		if (is_delim(c, ':'))
 			statuschange = 'v';
@@ -115,11 +114,13 @@ char	*getdict(char *dictfile)
 		return (NULL);
 	}
 	fsize = filesize(file);
+	file = close(file);
 	if (fsize < 1)
 	{
 		return (NULL);
 	}
 	readtable = malloc(sizeof(char) * (fsize + 1));
+	file = open(dictfile, O_RDONLY, 0);
 	readdictcontent(readtable, file, fsize);
 	file = close(file);
 	return (readtable);
