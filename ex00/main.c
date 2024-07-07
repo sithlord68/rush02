@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush02.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 17:21:37 by pjolidon          #+#    #+#             */
-/*   Updated: 2024/07/07 16:23:01 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 23:13:51 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-char	*translate(char *totranslate, char *dict);
+int		ft_part(int i, char *str, char *dict);
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
 
@@ -71,7 +72,8 @@ int	main(int argc, char **argv)
 {
 	char	*totranslate;
 	char	*dict;
-	char	*toput;
+	int		len;
+	int		back;
 
 	if (argc == 1)
 		return (0);
@@ -79,16 +81,16 @@ int	main(int argc, char **argv)
 	dict = setdict(argc, argv);
 	if (totranslate == NULL || dict == NULL)
 		return (0);
-	printf("totranslate: \"%s\"\n", totranslate);
-	printf("dict: \"%s\"\n", dict);
-	toput = translate(totranslate, dict);
-	ft_putstr(toput);
-	ft_putchar('\n');
+	len = 0;
+	while (totranslate[len])
+	{
+		if (totranslate[len] < '0' || totranslate[len] > '9')
+		{
+			write(1, "Error\n", 6);
+			return (0);
+		}
+		len++;
+	}
+	back = ft_part(len, totranslate, dict);
+	return (1);
 }
-
-/*
-printf("totranslate: \"%s\"\n", totranslate);
-printf("dict: \"%s\"\n", dict);
-//	free(totranslate);
-//	free(dict);
-*/

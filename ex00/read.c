@@ -6,7 +6,7 @@
 /*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 13:34:30 by fmixtur           #+#    #+#             */
-/*   Updated: 2024/07/07 22:21:23 by pjolidon         ###   ########.fr       */
+/*   Updated: 2024/07/07 23:14:51 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include<stdlib.h>
 #include<unistd.h>
 
-char	*get_txt(char *ptr);
-char	*get_txt(char *ptr);
+char	*get_txt(char *ptr, char *dict);
 char	*ft_strstr(char *str, char *to_find);
 void	print_text(char *ptr, char *nb);
 void	parse(char *ptr, char *str, int i);
@@ -69,11 +68,11 @@ char	*ft_strstr(char *str, char *to_find)
 	return (NULL);
 }
 
-char	*get_txt(char *ptr)
+char	*get_txt(char *ptr, char *dict)
 {
 	int	fl;
 
-	fl = open("./numbers.dict", O_RDWR);
+	fl = open(dict, O_RDWR);
 	if (fl == -1)
 	{
 		write(1, "ERROR\n", 6);
@@ -103,7 +102,7 @@ void	print_text(char *ptr, char *nb)
 	}
 }
 
-int	ft_read(char *str, int j)
+int	ft_read(char *str, int j, char *dict)
 {
 	char	*ptr;
 	int		i;
@@ -118,7 +117,7 @@ int	ft_read(char *str, int j)
 	while (0 < j--)
 		zeros[i++] = '0';
 	ptr = NULL;
-	ptr = get_txt(ptr);
+	ptr = get_txt(ptr, dict);
 	parse(ptr, str, len);
 	write(1, " ", 1);
 	if (zeros[1] != '\0')

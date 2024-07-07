@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ktintim- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: pjolidon <pjolidon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 22:52:29 by ktintim-          #+#    #+#             */
-/*   Updated: 2024/07/07 22:52:39 by ktintim-         ###   ########.fr       */
+/*   Updated: 2024/07/07 23:16:17 by pjolidon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <unistd.h>
 
 void	parse(char *ptr, char *str, int i);
@@ -48,8 +49,6 @@ void	i_2(char *ptr, char *str, int i)
 
 void	parse(char *ptr, char *str, int i)
 {
-	char	c[2];
-
 	if (str[0] == '0' && str[1] == '\0')
 		print_text(ptr, "0");
 	while (*str == '0')
