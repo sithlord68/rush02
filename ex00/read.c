@@ -19,6 +19,7 @@ char	*get_txt(char *ptr);
 char	*get_txt(char *ptr);
 char	*ft_strstr(char *str, char *to_find);
 void	print_text(char *ptr, char *nb);
+void	parse(char *ptr, char *str, int i);
 
 int	get_file_size(void)
 {
@@ -26,7 +27,7 @@ int	get_file_size(void)
 	char	c;
 	int		file_size;
 
-	fl = open("./numbers.dict",O_RDWR);
+	fl = open("./numbers.dict", O_RDWR);
 	if (fl == -1)
 	{
 		write(1, "ERROR\n", 6);
@@ -72,55 +73,16 @@ char	*get_txt(char *ptr)
 {
 	int	fl;
 
-	fl = open("./numbers.dict",O_RDWR);
+	fl = open("./numbers.dict", O_RDWR);
 	if (fl == -1)
 	{
-		write(1,"ERROR\n",6);
+		write(1, "ERROR\n", 6);
 		return (NULL);
 	}
 	ptr = malloc(sizeof(char) * get_file_size() + 1);
 	read(fl, ptr, get_file_size() + 1);
 	close(fl);
 	return (ptr);
-}
-
-void	parse(char *ptr, char *str, int i)
-{
-	char	c[2];
-
-	c[1] = '\0';
-	if (str[0] == '0' && str[1] == '\0')
-		print_text(ptr, "0");
-	while (*str =='0')
-		str++;
-	if (i == 3 )
-	{
-		c[0] = str[0];
-		print_text(ptr, c);
-		write(1, " ", 1);
-		print_text(ptr, "100");
-		write(1, " ", 1);
-		parse(ptr, str + 1, --i);
-	}
-	else if (i == 2 )
-	{
-		if (str[0] == '1')
-		{
-			print_text(ptr, str);
-		}
-		else
-		{	
-			c[0] = str[1];
-			str[1] = '0';
-			print_text(ptr, str);
-			write(1, " ", 1);
-			parse(ptr, c, --i);
-		}
-	}
-	else if (i == 1 && str[0] != '0')
-	{
-		print_text(ptr, str);
-	}
 }
 
 void	print_text(char *ptr, char *nb)
@@ -132,9 +94,10 @@ void	print_text(char *ptr, char *nb)
 	find = ft_strstr(ptr, nb);
 	while (find[i] != '\n')
 	{
-		if ((find[i] >= 'a' && find[i] <= 'z') || (find[i] >= 'A' && find[i] <= 'Z'))
+		if ((find[i] >= 'a' && find[i] <= 'z')
+			|| (find[i] >= 'A' && find[i] <= 'Z'))
 		{
-			write(1,&find[i],1);
+			write(1, &find[i], 1);
 		}
 		i++;
 	}
@@ -145,12 +108,22 @@ int	ft_read(char *str, int j)
 	char	*ptr;
 	int		i;
 	int		len;
+	char	*zeros;
 
 	len = 0;
 	while (str[len])
 		len++;
 	i = 0;
+	zeros = malloc(sizeof(char) * j);
+	while (0 < j--)
+		zeros[i++] = '0';
+	ptr = NULL;
 	ptr = get_txt(ptr);
 	parse(ptr, str, len);
+	write(1, " ", 1);
+	if (zeros[1] != '\0')
+		print_text(ptr, zeros);
+	write(1, " ", 1);
+	free(ptr);
 	return (0);
 }

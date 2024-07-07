@@ -15,7 +15,7 @@
 #include <stdio.h>
 
 int	ft_part(int i, char *str);
-int ft_read(char *str, int j);
+int	ft_read(char *str, int j);
 
 void	res_1(int i, char *str, int res)
 {
@@ -35,7 +35,7 @@ void	res_1(int i, char *str, int res)
 		k++;
 		j++;
 	}
-	ft_read(number, i);
+	ft_read(number, i - 1);
 	ft_part(i - 1, cpy);
 }
 
@@ -58,7 +58,7 @@ void	res_2(int i, char *str, int res)
 		k++;
 		j++;
 	}
-	ft_read(number, i);
+	ft_read(number, i - 2);
 	ft_part(i - 2, cpy);
 }
 
@@ -82,7 +82,7 @@ void	res_0(int i, char *str)
 		k++;
 		j++;
 	}
-	ft_read(number, i);
+	ft_read(number, i - 3);
 	ft_part(i - 3, cpy);
 }
 
