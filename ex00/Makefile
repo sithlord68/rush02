@@ -26,4 +26,4 @@ is.o: is.c
 	$(CC) $(CFLAGS) -c is.c 
 
 fclean:
-	rm -f *.o rush-02
+	rm -f *.o a.out rush-02
